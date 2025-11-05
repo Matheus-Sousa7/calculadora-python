@@ -35,3 +35,13 @@ Agora o projeto está pronto para ser utilizado.
 ## :white_check_mark: Tecnologias utilizadas
 * `Python - 3.10.5`
 * `Tkinter - 8.6`
+
+* ## ✍️ Modificações feitas por [Matheus-Sousa7]
+
+Este projeto foi originalmente desenvolvido por [Gabriel Schiavo](https://github.com/GabrielSchiavo/calculadora-python) e foi **forkado** para fins de estudo e personalização.
+
+### Alterações realizadas:
+- Adição de sistema TO-DO com CRUD completo
+- Refatoração do código para separar funcionalidades em arquivos diferentes
+- Atualização do layout da interface (se aplicável)
+- Melhorias na organização do projeto
