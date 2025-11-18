@@ -81,50 +81,35 @@ class Calculator:
                 relief="raised",
             )
 
-            # ajusta largura/altura por colspan (0 maior)
             btn.grid(row=r, column=c, rowspan=rs, columnspan=cs, sticky="nsew", padx=6, pady=6)
 
-        # fazer as colunas crescerem proporcionalmente
         for i in range(4):
             frame.grid_columnconfigure(i, weight=1)
         for j in range(5):
             frame.grid_rowconfigure(j, weight=1)
 
-    # Adicionar valor na expressão
     def add(self, char):
-        # evita dois operadores consecutivos (simples)
         if self.expression and char in "+-*/%" and self.expression[-1] in "+-*/%":
-            # substitui operador anterior
             self.expression = self.expression[:-1] + char
         else:
             self.expression += str(char)
         self.display.delete(0, tk.END)
         self.display.insert(tk.END, self.expression)
 
-    # Limpar a tela
     def clear(self):
         self.expression = ""
         self.display.delete(0, tk.END)
 
-    # Calcular
     def calculate(self, _=None):
         expr = self.expression.strip()
         if not expr:
             return
         try:
-            # interpretar porcentagem: 50% -> 50/100
             safe_expr = expr.replace('%', '/100')
-
-            # avaliar (usar eval simples como no original)
             result = eval(safe_expr)
-
-            # formato: remove .0 de inteiros
             if isinstance(result, float) and result.is_integer():
                 result = int(result)
-
-            # salvar no histórico
             self.db.save({"expressao": expr, "resultado": str(result)})
-
             self.display.delete(0, tk.END)
             self.display.insert(tk.END, str(result))
             self.expression = str(result)
@@ -137,29 +122,22 @@ class Calculator:
             self.display.delete(0, tk.END)
             self.expression = ""
 
-    # Mostrar histórico em janela
     def show_history(self):
         history = self.db.load()
-
         if not history:
             messagebox.showinfo("Histórico", "Nenhum cálculo salvo.")
             return
-
         hist_window = tk.Toplevel(self.root)
         hist_window.title("Histórico")
         hist_window.geometry("360x420")
         hist_window.configure(bg="#202020")
-
         text_area = tk.Text(hist_window, font=("Arial", 12), bg="#0f0f0f", fg="white")
         text_area.pack(fill="both", expand=True, padx=8, pady=8)
-
         for item in history:
             expr = item.get("expressao", "")
             res = item.get("resultado", "")
             text_area.insert(tk.END, f"{expr}  =  {res}\n")
-
         text_area.config(state="disabled")
-
 
 if __name__ == "__main__":
     root = tk.Tk()
