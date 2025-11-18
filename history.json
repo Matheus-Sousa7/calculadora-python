@@ -1,0 +1,22 @@
+[
+    {
+        "expressao": "4*4",
+        "resultado": "16"
+    },
+    {
+        "expressao": "1+1",
+        "resultado": "2"
+    },
+    {
+        "expressao": "7%2",
+        "resultado": "0.006986027944111776"
+    },
+    {
+        "expressao": "10/2",
+        "resultado": "5"
+    },
+    {
+        "expressao": "10/3",
+        "resultado": "3.3333333333333335"
+    }
+]
