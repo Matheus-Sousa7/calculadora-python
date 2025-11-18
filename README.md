@@ -1,4 +1,5 @@
 # Calculadora Python
+Esse é um projeto que apresenta como funciona uma calculadora para calculos aritimeticos. Entre as funções apresentadas para calculos é possivel armazenar o historico.
 
 <p align="left">
     <img src="https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge"/>
